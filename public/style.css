@@ -1,0 +1,353 @@
+/*---Reset---*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*---Custom Variables---*/
+:root {
+  --clr-black: #171823;
+  --clr-grey-light: #5b5e7e;
+  --clr-grey-dark: #25273d;
+  --clr-blue: #3a7cfd;
+  --clr-cream: #e3e4f1;
+  --grd-blue-purple: linear-gradient(
+    141deg,
+    rgba(85, 221, 255, 1) 0%,
+    rgba(192, 88, 243, 1) 100%
+  );
+
+  --ff-primary: "Josefin Sans", sans-serif;
+
+  --fw-400: 400;
+  --fw-700: 700;
+
+  --fs-h1: clamp(1.38rem, calc(0.9rem + 2.04vw), 1.88rem);
+  --fs-task: clamp(0.75rem, calc(0.39rem + 1.53vw), 1.13rem);
+  --fs-filter: 14px;
+  --fs-reorder: 14px;
+
+  --lh-h1: clamp(1.38rem, calc(0.9rem + 2.04vw), 1.88rem);
+  --lh-task: clamp(0.75rem, calc(0.39rem + 1.53vw), 1.13rem);
+  --lh-filter: 14px;
+  --lh-reorder: 14px;
+}
+
+/*---Utility Classes---*/
+.font-h1 {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-700);
+  font-size: var(--fs-h1);
+  color: var(--clr-cream);
+}
+
+.font-task {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-400);
+  font-size: var(--fs-task);
+  color: var(--clr-cream);
+  transition: color 0.2s ease-in;
+}
+
+.font-info {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-400);
+  font-size: clamp(0.75rem, calc(0.71rem + 0.19vw), 0.88rem);
+  color: var(--clr-cream);
+  transition: color 0.2s ease-in;
+}
+
+.font-filter {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-700);
+  font-size: var(--fs-filter);
+  color: var(--clr-grey-light);
+  transition: color 0.2s ease-in;
+}
+
+.font-reorder {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-700);
+  font-size: var(--fs-reorder);
+  color: var(--clr-grey-light);
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.lightgrey {
+  color: var(--clr-grey-light);
+}
+
+/*---General---*/
+nav {
+  width: min(100% - 48px, 540px);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: clamp(2.5rem, calc(0.71rem + 7.63vw), 4.38rem);
+  padding-bottom: 40px;
+}
+
+body {
+  background-color: var(--clr-black);
+  background-image: url("./images/bg-desktop-dark.jpg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% 200px;
+}
+
+.container--main {
+  width: min(100% - 48px, 540px);
+  margin-inline: auto;
+}
+
+.task-wrapper {
+  background-color: var(--clr-grey-dark);
+  border-radius: 5px;
+  box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+.task-create {
+  padding-block: 14px;
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.form {
+  width: 100%;
+}
+
+.textbox {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+}
+
+.task-menu {
+  box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+.task-wrapper-menu {
+  background-color: var(--clr-grey-dark);
+  border-bottom: 1px solid rgba(57, 58, 75, 1);
+}
+
+.task-wrapper-menu:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.task {
+  padding-block: 16px;
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(57, 58, 75, 1);
+  border-radius: 50%;
+  transition: all 0.1s linear;
+}
+
+.task-menu .circle:hover {
+  background: linear-gradient(var(--clr-grey-dark), var(--clr-grey-dark))
+      padding-box,
+    var(--grd-blue-purple) border-box;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+.checked {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-image: var(--grd-blue-purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+
+.cut {
+  text-decoration: line-through;
+  color: #4d5067;
+}
+
+.cross {
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.task-wrapper-info {
+  background-color: var(--clr-grey-dark);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: margin-top 0.5s;
+}
+
+.task-info {
+  padding-top: 16px;
+  padding-bottom: 20px;
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filters-desktop {
+  display: none;
+}
+
+.filters-desktop button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: color 0.2s ease-in;
+}
+
+.clear {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: color 0.2s ease-in;
+}
+
+.clear:hover {
+  color: var(--clr-cream);
+}
+
+.filters {
+  background-color: var(--clr-grey-dark);
+  border-radius: 5px;
+  padding-block: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 19px;
+  box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+.filters button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: color 0.2s ease-in;
+}
+
+.filters-desktop button:hover,
+.filters button:hover {
+  color: var(--clr-cream);
+}
+
+.active {
+  color: var(--clr-blue);
+}
+
+.drag-text {
+  font-weight: 400;
+  padding-top: 40px;
+  text-align: center;
+}
+
+@media (min-width: 540px) {
+  .items {
+    padding-right: 36px;
+  }
+
+  .filters-desktop {
+    display: flex;
+    gap: 19px;
+  }
+
+  .filters {
+    display: none;
+  }
+}

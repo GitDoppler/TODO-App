@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <script defer type="module" src="/scripts/addTask.js"></script>
+    <script defer type="module" src="/scripts/removeTask.js"></script>
+    <script defer type="module" src="/scripts/taskInfo.js"></script>
+    <script defer type="module" src="/scripts/filters.js"></script>
+    <script defer type="module" src="/scripts/dragTask.js"></script>
+    <header>
+      <nav>
+        <div class="font-h1">T O D O</div>
+      </nav>
+    </header>
+    <main>
+      <div class="container--main">
+        <div class="task-wrapper mb-16">
+          <div class="task-create">
+            <div class="circle"></div>
+            <form action="/home" method="post" class="form">
+              <input
+                type="text"
+                id="todo"
+                name="task"
+                placeholder="Create a new todo..."
+                class="textbox font-task"
+              />
+              <input type="submit" hidden />
+            </form>
+          </div>
+        </div>
+        <div class="task-menu">
+          <%if(tasks.length>0){%> <%tasks.forEach(task=>{%>
+          <div draggable="true" class="task-wrapper-menu">
+            <div class="task">
+              <div class="circle">
+                <%if(task.state==="finished"){%>
+                <div id="<%= task._id%>" class="checked" style="opacity: 1">
+                  <img src="/images/icon-check.svg" alt="" />
+                </div>
+                <%}else{%>
+                <div id="<%= task._id%>" class="checked" style="opacity: 0">
+                  <img src="/images/icon-check.svg" alt="" />
+                </div>
+                <%}%>
+              </div>
+              <%if(task.state==="finished"){%>
+              <div class="font-task cut"><%= task.task%></div>
+              <%}else{%>
+              <div class="font-task uncut"><%= task.task%></div>
+              <%}%>
+              <button id="<%= task._id%>" class="cross">
+                <img src="/images/icon-cross.svg" alt="delete task" />
+              </button>
+            </div>
+          </div>
+          <%})%> <%}%>
+
+          <div class="task-wrapper-info">
+            <div class="task-info">
+              <div class="items font-info lightgrey"><%=count%> items left</div>
+              <div class="filters-desktop">
+                <button class="filter-all font-filter active">All</button>
+                <button class="filter-active font-filter">Active</button>
+                <button class="filter-completed font-filter">Completed</button>
+              </div>
+              <button class="clear font-info lightgrey">Clear Completed</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filters">
+          <button class="filter-all font-filter active">All</button>
+          <button class="filter-active font-filter">Active</button>
+          <button class="filter-completed font-filter">Completed</button>
+        </div>
+
+        <div class="drag-text font-filter">
+          Drag and drop to reorder list<br />Reordering does not save
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
